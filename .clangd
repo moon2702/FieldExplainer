@@ -1,0 +1,25 @@
+CompileFlags:
+  Add:
+    - -I/usr/include/qt6
+    - -I/usr/include/qt6/QtCore
+    - -I/usr/include/qt6/QtWidgets
+    - -I/usr/include/qt6/QtGui
+    - -I/usr/include/qt6/QtNetwork
+    - -I/usr/include/qt6/QtSystemTrayIcon
+    - -DQT_CORE_LIB
+    - -DQT_WIDGETS_LIB
+    - -DQT_GUI_LIB
+    - -DQT_NETWORK_LIB
+    - -DQT_NO_DEBUG_OUTPUT
+  Remove:
+    - -W*
+Diagnostics:
+  Suppress:
+    - file-not-found
+  ClangTidy:
+    Add: []
+    Remove: 
+      - readability-*
+      - modernize-*
+  IgnoreMacros: true
+

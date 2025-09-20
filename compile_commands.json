@@ -1,0 +1,11 @@
+[
+  {
+    "directory": "/home/bowl/Public/code/FieldExplainer",
+    "command": "g++ -I/usr/include/qt6 -I/usr/include/qt6/QtCore -I/usr/include/qt6/QtWidgets -I/usr/include/qt6/QtGui -I/usr/include/qt6/QtNetwork -DQT_CORE_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -std=c++17 -c src/main.cpp",
+    "file": "src/main.cpp"
+  }
+]
+
+
+
+
