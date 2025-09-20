@@ -128,10 +128,24 @@ class FloatingIcon : public QWidget {
     Q_OBJECT
 public:
     explicit FloatingIcon(QWidget* parent = nullptr)
-        : QWidget(parent, Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::Tool)
+        : QWidget(parent)
         , m_fadeAnimation(new QPropertyAnimation(this))
         , m_opacityEffect(new QGraphicsOpacityEffect(this))
     {
+        // 检测平台并设置合适的窗口标志
+        QString platform = QApplication::platformName();
+        qDebug() << "当前平台:" << platform;
+        
+        if (platform == "wayland") {
+            // Wayland环境下使用Tool窗口，避免Popup问题
+            setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::Tool);
+            qDebug() << "Wayland环境：使用Qt::Tool窗口标志";
+        } else {
+            // X11环境下使用Popup
+            setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::Popup);
+            qDebug() << "X11环境：使用Qt::Popup窗口标志";
+        }
+        
         setupIcon();
         setGraphicsEffect(m_opacityEffect);
         setFixedSize(32, 32);
@@ -188,11 +202,17 @@ public:
         
         // 添加闪烁效果提示用户注意
         QTimer::singleShot(100, this, [this]() {
-            animateShow(); // 再次淡入以产生闪烁效果
+            if (isVisible()) {
+                animateShow(); // 再次淡入以产生闪烁效果
+            }
         });
         
         // 自动隐藏定时器
-        QTimer::singleShot(5000, this, &FloatingIcon::hideIcon);
+        QTimer::singleShot(5000, this, [this]() {
+            if (isVisible()) {
+                hideIcon();
+            }
+        });
     }
 
     void hideIcon() {
@@ -225,7 +245,11 @@ protected:
     void leaveEvent(QEvent* event) override {
         // 鼠标离开时重新启动自动隐藏
         Q_UNUSED(event)
-        QTimer::singleShot(3000, this, &FloatingIcon::hideIcon);
+        QTimer::singleShot(3000, this, [this]() {
+            if (isVisible()) {
+                hideIcon();
+            }
+        });
     }
 
     void showEvent(QShowEvent* event) override {
@@ -237,6 +261,10 @@ signals:
 
 private:
     void animateShow() {
+        if (!m_opacityEffect || !m_fadeAnimation) {
+            qWarning() << "动画对象为空，跳过显示动画";
+            return;
+        }
         m_opacityEffect->setOpacity(0.0);
         m_fadeAnimation->setStartValue(0.0);
         m_fadeAnimation->setEndValue(0.9);
@@ -244,9 +272,19 @@ private:
     }
 
     void animateHide() {
+        if (!m_opacityEffect || !m_fadeAnimation) {
+            qWarning() << "动画对象为空，直接隐藏";
+            hide();
+            return;
+        }
+        
         m_fadeAnimation->setStartValue(m_opacityEffect->opacity());
         m_fadeAnimation->setEndValue(0.0);
+        
+        // 断开之前的连接避免重复连接
+        disconnect(m_fadeAnimation, &QPropertyAnimation::finished, this, &QWidget::hide);
         connect(m_fadeAnimation, &QPropertyAnimation::finished, this, &QWidget::hide);
+        
         m_fadeAnimation->start();
     }
 
@@ -302,7 +340,7 @@ public:
                     qDebug() << "==========================================";
                     
                     // 显示系统托盘提示
-                    if (m_systemTray) {
+                    if (m_systemTray && m_systemTray->isVisible()) {
                         QString shortContent = content.length() > 50 ? 
                             content.left(47) + "..." : content;
                         m_systemTray->showMessage(
@@ -313,8 +351,26 @@ public:
                         );
                     }
                     
-                    // 显示悬浮图标
-                    m_floatingIcon->showNearCursor(content);
+                    // 测试悬浮图标创建 - 使用延迟创建避免问题
+                    qDebug() << "检测到剪贴板内容，准备显示悬浮图标";
+                    qDebug() << "内容:" << content.left(50) << "...";
+                    
+                    // 延迟创建悬浮图标，避免在信号处理中直接创建窗口
+                    QTimer::singleShot(100, this, [this, content]() {
+                        qDebug() << "延迟创建悬浮图标";
+                        try {
+                            if (m_floatingIcon) {
+                                qDebug() << "显示悬浮图标";
+                                m_floatingIcon->showNearCursor(content);
+                            } else {
+                                qDebug() << "悬浮图标对象为空";
+                            }
+                        } catch (const std::exception& e) {
+                            qDebug() << "悬浮图标创建异常:" << e.what();
+                        } catch (...) {
+                            qDebug() << "悬浮图标创建发生未知异常";
+                        }
+                    });
                 });
         
         connect(m_floatingIcon.get(), &FloatingIcon::iconClicked,

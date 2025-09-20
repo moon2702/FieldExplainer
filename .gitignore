@@ -1,9 +1,10 @@
 # Build directories
-build/
-build-release/
-build-debug/
-bin/
-install/
+build/*
+build-release/*
+build-debug/*
+bin/*
+install/*
+.cache/*
 
 # CMake generated files
 CMakeCache.txt
