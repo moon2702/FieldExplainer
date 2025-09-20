@@ -1,0 +1,29 @@
+{
+	"BUILD_DIR" : "/home/bowl/Public/code/FieldExplainer/build-debug/FieldExplainer_autogen",
+	"CMAKE_BINARY_DIR" : "/home/bowl/Public/code/FieldExplainer/build-debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/bowl/Public/code/FieldExplainer/build-debug",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/bowl/Public/code/FieldExplainer",
+	"CMAKE_SOURCE_DIR" : "/home/bowl/Public/code/FieldExplainer",
+	"CROSS_CONFIG" : false,
+	"GENERATOR" : "Unix Makefiles",
+	"INCLUDE_DIR" : "/home/bowl/Public/code/FieldExplainer/build-debug/FieldExplainer_autogen/include",
+	"INPUTS" : 
+	[
+		"/home/bowl/Public/code/FieldExplainer/resource/config/settings.json",
+		"/home/bowl/Public/code/FieldExplainer/resource/styles/main.qss",
+		"/home/bowl/Public/code/FieldExplainer/resource/icons/floating_icon.png",
+		"/home/bowl/Public/code/FieldExplainer/resource/icons/analyze_icon.png",
+		"/home/bowl/Public/code/FieldExplainer/resource/icons/app_icon.png"
+	],
+	"LOCK_FILE" : "/home/bowl/Public/code/FieldExplainer/build-debug/CMakeFiles/FieldExplainer_autogen.dir/AutoRcc_resources_6WJNPILU4A_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "-name", "resources" ],
+	"OUTPUT_CHECKSUM" : "6WJNPILU4A",
+	"OUTPUT_NAME" : "qrc_resources.cpp",
+	"RCC_EXECUTABLE" : "/usr/lib/qt6/rcc",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "/home/bowl/Public/code/FieldExplainer/build-debug/CMakeFiles/FieldExplainer_autogen.dir/AutoRcc_resources_6WJNPILU4A_Used.txt",
+	"SOURCE" : "/home/bowl/Public/code/FieldExplainer/resource/resources.qrc",
+	"USE_BETTER_GRAPH" : true,
+	"VERBOSITY" : 0
+}

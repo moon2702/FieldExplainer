@@ -1,0 +1,17 @@
+BasedOnStyle: LLVM
+IndentWidth: 4 # 缩进宽度
+TabWidth: 4 # 制表符宽度
+UseTab: Never # 使用空格替代制表符
+ColumnLimit: 0 # 列限制
+AlignTrailingComments: true # 对尾随注释进行对齐
+CommentPragmas: '^\s*//' # 注释前缀
+
+SortIncludes: true # 对#include排序
+IncludeBlocks: Regroup # 按组排序#include
+BreakBeforeInheritanceComma: false # 继承列表的逗号之前换行
+BreakConstructorInitializers: BeforeColon # 构造函数初始化列表的冒号之前换行
+BreakStringLiterals: true # 字符串字面量换行
+PointerAlignment: Left # 指针对齐方式
+
+AllowShortIfStatementsOnASingleLine: true # 允许单行if语句
+AllowShortLoopsOnASingleLine: true # 允许单行循环语句

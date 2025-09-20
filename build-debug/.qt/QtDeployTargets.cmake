@@ -1,0 +1,2 @@
+set(__QT_DEPLOY_TARGET_FieldExplainer_FILE /home/bowl/Public/code/FieldExplainer/bin/FieldExplainer)
+set(__QT_DEPLOY_TARGET_FieldExplainer_TYPE EXECUTABLE)

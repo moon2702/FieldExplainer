@@ -1,0 +1,10 @@
+/home/bowl/Public/code/FieldExplainer/build-release/install/bin/FieldExplainer
+/home/bowl/Public/code/FieldExplainer/build-release/install/share/FieldExplainer/icons/app_icon.png
+/home/bowl/Public/code/FieldExplainer/build-release/install/share/FieldExplainer/icons/floating_icon.png
+/home/bowl/Public/code/FieldExplainer/build-release/install/share/FieldExplainer/icons/analyze_icon.png
+/home/bowl/Public/code/FieldExplainer/build-release/install/share/FieldExplainer/config/settings.json
+/home/bowl/Public/code/FieldExplainer/build-release/install/share/FieldExplainer/resources.qrc
+/home/bowl/Public/code/FieldExplainer/build-release/install/share/FieldExplainer/styles/main.qss
+/home/bowl/Public/code/FieldExplainer/build-release/install/share/FieldExplainer/README.md
+/home/bowl/Public/code/FieldExplainer/build-release/install/share/applications/FieldExplainer.desktop
+/home/bowl/Public/code/FieldExplainer/build-release/install/share/icons/hicolor/256x256/apps/FieldExplainer.png

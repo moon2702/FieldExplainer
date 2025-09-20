@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/bowl/Public/code/FieldExplainer/build-release/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

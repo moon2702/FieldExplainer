@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=FieldExplainer
+Comment=Quick field meaning analysis tool
+Exec=@CMAKE_INSTALL_PREFIX@/bin/@OUT_NAME@
+Icon=FieldExplainer
+Terminal=false
+Categories=Utility;Development;
+Keywords=field;explainer;analysis;clipboard;
+StartupNotify=true
+StartupWMClass=FieldExplainer

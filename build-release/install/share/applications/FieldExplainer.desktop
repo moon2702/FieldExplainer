@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=FieldExplainer
+Comment=Quick field meaning analysis tool
+Exec=/home/bowl/Public/code/FieldExplainer/build-release/install/bin/FieldExplainer
+Icon=FieldExplainer
+Terminal=false
+Categories=Utility;Development;
+Keywords=field;explainer;analysis;clipboard;
+StartupNotify=true
+StartupWMClass=FieldExplainer
